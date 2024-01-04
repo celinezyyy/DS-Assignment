@@ -8,7 +8,7 @@ public class Book extends javax.swing.JInternalFrame implements BookingListener{
     
     private LinkedListPassenger comfirmTicketList = new LinkedListPassenger();
     private QueuePassenger waitingList = new QueuePassenger();
- 
+    private String filePath = "C://Users//user//OneDrive - Universiti Malaya//Desktop//UM_CLASS//dataFlight.txt";
     private BookingListener bookingListener;
     
      public void setBookingListener(BookingListener listener) {
