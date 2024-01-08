@@ -8,6 +8,7 @@ public class General_page_for_ticketInfo extends javax.swing.JFrame {
     private Search_Flight searchFlight;
     private Ticket_Info ticketInfo;
     private Book book;
+ 
     
     public General_page_for_ticketInfo() {
         initComponents();
@@ -17,13 +18,14 @@ public class General_page_for_ticketInfo extends javax.swing.JFrame {
         book.setBookingListener(ticketInfo); 
     }
     
-    private void showSearchFlight() {
-         if (searchFlight.isClosed() || searchFlight.getParent() == null) {
-            jDesktopPane1.add(searchFlight);
-        }
-        searchFlight.setVisible(true);
-        searchFlight.setSelected(true);
+   
+    public void showSearchFlight() {
+    if (searchFlight == null) {
+        searchFlight = new Search_Flight();
     }
+    searchFlight.setVisible(true);
+}
+
     
     private void showTicketInfo() {
         if (ticketInfo.isClosed() || ticketInfo.getParent() == null) {
@@ -149,7 +151,7 @@ public class General_page_for_ticketInfo extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       
+        showSearchFlight();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed

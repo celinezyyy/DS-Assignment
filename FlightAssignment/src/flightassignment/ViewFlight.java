@@ -33,7 +33,7 @@ public class ViewFlight {
             
             System.out.println("Available Flight :");
             int targetWeekNumber = Integer.parseInt(targetWeek); 
-            try (BufferedReader br = new BufferedReader(new FileReader("C://Users//user//OneDrive - Universiti Malaya//Desktop//UM_CLASS//dataFlight.txt"))) /*change filepath!*/ {
+            try (BufferedReader br = new BufferedReader(new FileReader("C://Users//User//OneDrive//Documents//NetBeansProjects//DS-Assignment//dataFlight.txt"))) /*change filepath!*/ {
                 String line;
                 
                 while ((line = br.readLine()) != null) {
@@ -164,7 +164,7 @@ public class ViewFlight {
         System.out.println();
         
         //search user choosen's flight
-        try (BufferedReader br = new BufferedReader(new FileReader("C://Users//user//OneDrive - Universiti Malaya//Desktop//UM_CLASS//dataFlight.txt"))) /*change filepath!*/ {
+        try (BufferedReader br = new BufferedReader(new FileReader("C://Users//User//OneDrive//Documents//NetBeansProjects//DS-Assignment//dataFlight.txt"))) /*change filepath!*/ {
             String line;
             while ((line = br.readLine()) != null) {
 
@@ -227,7 +227,7 @@ public class ViewFlight {
     
     public static void updateTextFile(String oldString, String newString){
         
-        File fileToBeModified = new File("C://Users//user//OneDrive - Universiti Malaya//Desktop//UM_CLASS//dataFlight.txt");
+        File fileToBeModified = new File("C://Users//User//OneDrive//Documents//NetBeansProjects//DS-Assignment//dataFlight.txt");
         String oldContent = "";
         BufferedReader reader = null;
         FileWriter writer = null;

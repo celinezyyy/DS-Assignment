@@ -63,6 +63,10 @@ public class PassengerInfo {
         return passportNo;
     }
 
+    public void setSeatnumber(int seatnumber) {
+        this.seatnumber = seatnumber;
+    }
+
     public void setPassportNo(String passportNo) {
         this.passportNo = passportNo;
     }

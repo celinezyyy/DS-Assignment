@@ -335,27 +335,33 @@ public class Book extends javax.swing.JInternalFrame implements BookingListener{
     }
 
     @Override
-    public void onBookingCanceled(String passengerName, String passportNumber) {
+    public void onBookingCanceled(String passengerName, String passportNumber,String flightNo) {
+        
+        
        if (removePassengerAndUpdateSeats(passengerName, passportNumber)) {
         if (!waitingList.isEmpty()) {
             PassengerInfo firstInWaiting = waitingList.dequeuePassenger().passenger; 
             firstInWaiting.setStatus("Confirmed");
+            firstInWaiting.setSeatnumber(1);
             confirmTicketList.addLastPassenger(firstInWaiting);
             JOptionPane.showMessageDialog(this, "A passenger from the waiting list has been confirmed.", "Update", JOptionPane.INFORMATION_MESSAGE);
             
-            
-            
             // Notify the listener about the change
             if (bookingListener != null) {
-                 bookingListener.onStatusUpdated(firstInWaiting.getName(), firstInWaiting.getPassportNo(), "Confirmed");
+                 bookingListener.onStatusUpdated(firstInWaiting.getName(), firstInWaiting.getPassportNo(), "Confirmed",1);
             }
         }
-    }
-       
+        
+         updateAvailableSeats(flightNo, 1);
+        
+      
+       }
     }
     
+   
+    
     @Override
-    public void onStatusUpdated(String passengerName, String passportNumber, String newStatus) {
+    public void onStatusUpdated(String passengerName, String passportNumber, String newStatus, int newSeatNo) {
     }
 
     private void bookFlight(LinkedListPassenger confirmTicketList, QueuePassenger waitingList) {
@@ -373,8 +379,10 @@ public class Book extends javax.swing.JInternalFrame implements BookingListener{
             JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        
         Scanner read = new Scanner(System.in);
-        try (BufferedReader br = new BufferedReader(new FileReader("C://Users//user//OneDrive - Universiti Malaya//Desktop//UM_CLASS//dataFlight.txt"))) /*change filepath!*/ {
+        try (BufferedReader br = new BufferedReader(new FileReader("C://Users//User//OneDrive//Documents//NetBeansProjects//DS-Assignment//dataFlight.txt"))) /*change filepath!*/ {
             String line;
             while ((line = br.readLine()) != null) {
 
@@ -398,7 +406,7 @@ public class Book extends javax.swing.JInternalFrame implements BookingListener{
                         JOptionPane.showMessageDialog(this, "Ticket booked successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                         break;
                     }else{
-                        passenger = new PassengerInfo(passengerName, passportNumber,-1,"Waiting List",weekFlight,date,timeFlight,endTime,flightNo);
+                        passenger = new PassengerInfo(passengerName, passportNumber,0,"Waiting List",weekFlight,date,timeFlight,endTime,flightNo);
                         waitingList.enqueuePassenger(passenger);
                         isFlightFound = true;
                         JOptionPane.showMessageDialog(this, "No available seats. You have been added to the waiting list.", "Waiting List", JOptionPane.INFORMATION_MESSAGE);
@@ -428,9 +436,42 @@ public class Book extends javax.swing.JInternalFrame implements BookingListener{
         }
     }
     
+    
+    public void updateAvailableSeats(String flightNoToUpdate, int seatsToAdd) {
+    File fileToBeModified = new File("C://Users//User//OneDrive//Documents//NetBeansProjects//DS-Assignment//dataFlight.txt");
+    StringBuilder newFileContent = new StringBuilder();
+    try (BufferedReader br = new BufferedReader(new FileReader(fileToBeModified))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            String[] fields = line.split("\t");
+            if (fields.length > 5 && fields[5].equals(flightNoToUpdate)) {
+                int currentSeats = Integer.parseInt(fields[4]);
+                int updatedSeats = currentSeats + seatsToAdd;
+                fields[4] = String.valueOf(updatedSeats);  
+                line = String.join("\t", fields);  
+            }
+            newFileContent.append(line).append(System.lineSeparator());
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+        return;
+    }
+
+    
+    try (FileWriter writer = new FileWriter(fileToBeModified)) {
+        writer.write(newFileContent.toString());
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+        
+        
+    
+            
     public static void updateTextFile(String oldString, String newString){
         
-        File fileToBeModified = new File("C://Users//user//OneDrive - Universiti Malaya//Desktop//UM_CLASS//dataFlight.txt");
+        File fileToBeModified = new File("C://Users//User//OneDrive//Documents//NetBeansProjects//DS-Assignment//dataFlight.txt");
         String oldContent = "";
         BufferedReader reader = null;
         FileWriter writer = null;
@@ -463,6 +504,7 @@ public class Book extends javax.swing.JInternalFrame implements BookingListener{
             }
         }
     }
+    
 
     public static void main(String args[]) {
        

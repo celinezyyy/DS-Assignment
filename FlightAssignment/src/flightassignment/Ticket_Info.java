@@ -20,20 +20,22 @@ public class Ticket_Info extends javax.swing.JInternalFrame implements BookingLi
     }
     
      @Override
-    public void onBookingCanceled(String passengerName, String passportNumber) {
+    public void onBookingCanceled(String passengerName, String passportNumber, String flightNo) {
+        
        
     }
     
       @Override
-    public void onStatusUpdated(String passengerName, String passportNumber, String newStatus) {
-         updatePassengerStatus(passengerName, passportNumber, newStatus);
+    public void onStatusUpdated(String passengerName, String passportNumber, String newStatus, int newSeatNo) {
+         updatePassengerStatus(passengerName, passportNumber, newStatus,newSeatNo);
     }
     
-    public void updatePassengerStatus(String passengerName, String passportNumber, String newStatus) {
+    public void updatePassengerStatus(String passengerName, String passportNumber, String newStatus, int newSeatNo) {
     DefaultTableModel model = (DefaultTableModel) Table.getModel();
     for (int i = 0; i < model.getRowCount(); i++) {
         if (model.getValueAt(i, 1).equals(passengerName) && model.getValueAt(i, 4).equals(passportNumber)) {
             model.setValueAt(newStatus, i, 9); 
+            model.setValueAt(newSeatNo, i, 3);
             break;
         }
     }
@@ -134,6 +136,8 @@ public class Ticket_Info extends javax.swing.JInternalFrame implements BookingLi
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         
         int selectedRow = Table.getSelectedRow();
+        String flightNo = (String) Table.getValueAt(selectedRow, 0);
+
 
         if (selectedRow >= 0) { 
         String status = (String) Table.getValueAt(selectedRow, 9); 
@@ -151,7 +155,7 @@ public class Ticket_Info extends javax.swing.JInternalFrame implements BookingLi
                 ((DefaultTableModel) Table.getModel()).removeRow(selectedRow);
               
                  if(bookingListener != null) {
-                bookingListener.onBookingCanceled(passengerName, passportNumber);
+                bookingListener.onBookingCanceled(passengerName, passportNumber,flightNo);
             }
                
                  

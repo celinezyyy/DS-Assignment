@@ -113,7 +113,7 @@ public class Search_Flight extends javax.swing.JFrame {
         int convertedWeek = conversion(selectedString);
         jTextArea1.setText(null);
         
-        try (BufferedReader br = new BufferedReader(new FileReader("C://Users//user//OneDrive - Universiti Malaya//Desktop//UM_CLASS//dataFlight.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("C://Users//User//OneDrive//Documents//NetBeansProjects//DS-Assignment//dataFlight.txt"))) {
             String line;
             boolean weekFound = false;
             while ((line = br.readLine()) != null) {

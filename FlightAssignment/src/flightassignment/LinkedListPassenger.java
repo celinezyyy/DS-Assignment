@@ -16,7 +16,8 @@ public class LinkedListPassenger<E,T> {
         return size;
     }
     
-
+  
+   
     public void addFirstPassenger(PassengerInfo passenger){
         
         NodePassenger newNode = new NodePassenger(passenger);
