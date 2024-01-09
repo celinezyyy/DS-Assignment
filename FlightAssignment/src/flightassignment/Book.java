@@ -382,7 +382,7 @@ public class Book extends javax.swing.JInternalFrame implements BookingListener{
         
         
         Scanner read = new Scanner(System.in);
-        try (BufferedReader br = new BufferedReader(new FileReader("C://Users//User//OneDrive//Documents//NetBeansProjects//DS-Assignment//dataFlight.txt"))) /*change filepath!*/ {
+        try (BufferedReader br = new BufferedReader(new FileReader("C:/Users/60111/Documents/JAVA/DS-Assignmentt/FlightAssignment/src/flightassignment/dataFlight.txt"))) /*change filepath!*/ {
             String line;
             while ((line = br.readLine()) != null) {
 
@@ -438,7 +438,7 @@ public class Book extends javax.swing.JInternalFrame implements BookingListener{
     
     
     public void updateAvailableSeats(String flightNoToUpdate, int seatsToAdd) {
-    File fileToBeModified = new File("C://Users//User//OneDrive//Documents//NetBeansProjects//DS-Assignment//dataFlight.txt");
+    File fileToBeModified = new File("C:/Users/60111/Documents/JAVA/DS-Assignmentt/FlightAssignment/src/flightassignment/dataFlight.txt");
     StringBuilder newFileContent = new StringBuilder();
     try (BufferedReader br = new BufferedReader(new FileReader(fileToBeModified))) {
         String line;
@@ -471,7 +471,7 @@ public class Book extends javax.swing.JInternalFrame implements BookingListener{
             
     public static void updateTextFile(String oldString, String newString){
         
-        File fileToBeModified = new File("C://Users//User//OneDrive//Documents//NetBeansProjects//DS-Assignment//dataFlight.txt");
+        File fileToBeModified = new File("C:/Users/60111/Documents/JAVA/DS-Assignmentt/FlightAssignment/src/flightassignment/dataFlight.txt");
         String oldContent = "";
         BufferedReader reader = null;
         FileWriter writer = null;

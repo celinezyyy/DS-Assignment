@@ -20,10 +20,9 @@ public class General_page_for_ticketInfo extends javax.swing.JFrame {
     
    
     public void showSearchFlight() {
-    if (searchFlight == null) {
-        searchFlight = new Search_Flight();
-    }
-    searchFlight.setVisible(true);
+        Search_Flight fh=new Search_Flight();
+        fh.setLocationRelativeTo(this); // Set location relative to the parent window
+        fh.setVisible(true);
 }
 
     
@@ -70,11 +69,11 @@ public class General_page_for_ticketInfo extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1203, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 538, Short.MAX_VALUE)
         );
 
         jMenu3.setText("Flight");
@@ -162,8 +161,9 @@ public class General_page_for_ticketInfo extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-
-                new General_page_for_ticketInfo().setVisible(true);
+                General_page_for_ticketInfo mf=new General_page_for_ticketInfo();
+                mf.setLocationRelativeTo(null);//Center the window on the screen
+                mf.setVisible(true);
 
             }
         });
