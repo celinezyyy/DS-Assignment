@@ -1,6 +1,6 @@
 package flightassignment;
 
-public class LinkedListPassenger<E,T> {
+public class LinkedListPassenger {
     
     NodePassenger head;
     NodePassenger tail;

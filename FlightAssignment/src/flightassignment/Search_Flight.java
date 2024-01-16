@@ -37,7 +37,7 @@ public class Search_Flight extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(560, 560));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Week 1 (1/12/2023 - 2/12/2023)", "Week 2 (3/12/2023 - 9/12/2023)", "Week 3 (10/12/2023 - 16/12/2023)", "Week 4 (17/12/2023 - 23/12/2023)", "Week 5 (24/12/2023 - 30/12/2023)", "Week 6 (31/12/2023)" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Week 1 (1/12/2023 - 7/12/2023)", "Week 2 (8/12/2023 - 14/12/2023)", "Week 3 (15/12/2023 - 21/12/2023)", "Week 4 (22/12/2023 - 28/12/2023)", "Week 5 (29/12/2023 - 31/12/2023)"}));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -125,7 +125,7 @@ public class Search_Flight extends javax.swing.JFrame {
         int convertedWeek = conversion(selectedString);
         jTextArea1.setText(null);
         
-        try (BufferedReader br = new BufferedReader(new FileReader("C:/Users/60111/Documents/JAVA/DS-Assignmentt/FlightAssignment/src/flightassignment/dataFlight.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("dataFlight.txt"))) {
             String line;
             boolean weekFound = false;
             while ((line = br.readLine()) != null) {
@@ -155,18 +155,16 @@ public class Search_Flight extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
         private int conversion(String oriItemName) {
             switch (oriItemName) {
-                case "Week 1 (1/12/2023 - 2/12/2023)":
+                case "Week 1 (1/12/2023 - 7/12/2023)":
                     return 1;
-                case "Week 2 (3/12/2023 - 9/12/2023)":
+                case "Week 2 (8/12/2023 - 14/12/2023)":
                     return 2;
-                case "Week 3 (10/12/2023 - 16/12/2023)":
+                case "Week 3 (15/12/2023 - 21/12/2023)":
                     return 3;
-                case "Week 4 (17/12/2023 - 23/12/2023)":
+                case "Week 4 (22/12/2023 - 28/12/2023)":
                     return 4;
-                case "Week 5 (24/12/2023 - 30/12/2023)":
+                case "Week 5 (29/12/2023 - 31/12/2023)":
                     return 5;
-                case "Week 6 (31/12/2023)":
-                    return 6;
                 default:
                     return 1; 
             }
