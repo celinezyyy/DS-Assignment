@@ -16,5 +16,6 @@ This project developed a Flight Ticket Booking System that allows users to searc
 
 5. Ticket Cancellation: Automatically updates waiting list, promoting the first passenger to a confirmed seat when a ticket is canceled.
 
-_**Technologies:**_ Java · Swings
+_**Technologies:**_ Java 
+
 _**Focus:**_ Backend Logic · Queue · CRUD Operations · Array
